@@ -1,0 +1,9 @@
+node_modules/
+.wrangler/
+.dev.vars
+.env
+coverage/
+dist/
+*.log
+wrangler.local.jsonc
+*-backup.sql

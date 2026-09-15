@@ -1,0 +1,34 @@
+{
+  "name": "groupman-tcg-api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Private Cloudflare sync server for the Group TCG RuneLite plugin",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "deploy": "pnpm db:migrate:remote && wrangler deploy",
+    "db:migrate:production": "wrangler d1 migrations apply DB --remote --config wrangler.local.jsonc",
+    "deploy:production": "pnpm db:migrate:production && wrangler deploy --config wrangler.local.jsonc",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check": "pnpm typecheck && pnpm test"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260717.1",
+    "typescript": "7.0.2",
+    "vitest": "4.1.10",
+    "wrangler": "4.112.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "cloudflare": {
+    "bindings": {
+      "DB": {
+        "description": "Stores one Group TCG group's members, cards, pack events, and Top Trumps results."
+      }
+    }
+  }
+}

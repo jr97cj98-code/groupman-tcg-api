@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "groupman-tcg-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-17",
+  "workers_dev": true,
+  // Configure SETUP_KEY as an encrypted Worker secret. Never add its value here.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "groupman-tcg",
+      "migrations_dir": "migrations","database_id": "6e0461e2-da4d-4550-a8b1-92fb62653bb2"
+    }
+  ]
+}
